@@ -30,282 +30,88 @@ st.set_page_config(
 
 # ============================================================
 # CUSTOM CSS — refined dark-finance aesthetic
-# Fonts: Syne (display) + IBM Plex Mono (data)
-# Colors: near-black base, electric cyan accent, amber signal
 # ============================================================
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Syne+Mono&display=swap');
 
-/* ── Base reset ───────────────────────────────────────────── */
+/* ── Base ───────────────────────────── */
 html, body, [class*="css"] {
-    font-family: 'Syne', sans-serif;
-    background-color: #0a0d12;
-    color: #e2e8f0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #000000;
 }
 
-/* ── App background ───────────────────────────────────────── */
+/* App background */
 .stApp {
-    background: #0a0d12;
+    background-color: #ffffff;
 }
 
-/* Main content area */
+/* Main spacing */
 .block-container {
-    padding-top: 2rem;
-    padding-bottom: 3rem;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
 }
 
-/* ── Hero banner ──────────────────────────────────────────── */
-.hero {
-    background: linear-gradient(135deg, #0f1923 0%, #0d1f2d 50%, #071a14 100%);
-    border: 1px solid #1e3a4a;
-    border-radius: 16px;
-    padding: 2.5rem 3rem;
-    margin-bottom: 2rem;
-    position: relative;
-    overflow: hidden;
-}
-.hero::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 220px; height: 220px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,229,200,0.08) 0%, transparent 70%);
-}
-.hero-title {
-    font-size: 2.6rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: #ffffff;
-    margin: 0 0 0.4rem 0;
-    line-height: 1.15;
-}
-.hero-title span { color: #00e5c8; }
-.hero-sub {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.82rem;
-    color: #4a7c8a;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+/* ── Headers ───────────────────────── */
+h1, h2, h3 {
+    color: #000000;
 }
 
-/* ── Section headers ──────────────────────────────────────── */
-.section-tag {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #00e5c8;
-    margin-bottom: 0.3rem;
-}
-.section-title {
-    font-size: 1.55rem;
-    font-weight: 700;
-    color: #f1f5f9;
-    margin: 0 0 1.5rem 0;
-    padding-bottom: 0.6rem;
-    border-bottom: 1px solid #1a2a35;
-}
-
-/* ── Metric cards ─────────────────────────────────────────── */
-.card-grid {
-    display: grid;
-    gap: 1rem;
-}
+/* ── Simple cards ──────────────────── */
 .metric-card {
-    background: #0f1923;
-    border: 1px solid #1e3a4a;
-    border-radius: 12px;
-    padding: 1.2rem 1.5rem;
-}
-.metric-card.accent {
-    border-color: #00e5c8;
-    background: linear-gradient(135deg, #0f2420 0%, #0f1923 100%);
-}
-.metric-card.warn {
-    border-color: #f59e0b;
-    background: linear-gradient(135deg, #1f1a0e 0%, #0f1923 100%);
-}
-.metric-card.danger {
-    border-color: #ef4444;
-    background: linear-gradient(135deg, #1f0e0e 0%, #0f1923 100%);
-}
-.card-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #4a7c8a;
-    margin-bottom: 0.5rem;
-}
-.card-value {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 1.65rem;
-    font-weight: 600;
-    color: #e2e8f0;
-    line-height: 1.1;
-}
-.card-value.cyan  { color: #00e5c8; }
-.card-value.amber { color: #f59e0b; }
-.card-value.green { color: #22c55e; }
-.card-value.red   { color: #ef4444; }
-.card-sub {
-    font-size: 0.8rem;
-    color: #4a7c8a;
-    margin-top: 0.35rem;
+    background: #f9f9f9;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    padding: 1rem;
 }
 
-/* ── Signal / badge ───────────────────────────────────────── */
-.badge {
-    display: inline-block;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    padding: 0.3rem 0.85rem;
-    border-radius: 20px;
-}
-.badge-buy    { background: #052c1a; color: #22c55e; border: 1px solid #22c55e; }
-.badge-sell   { background: #2c0505; color: #ef4444; border: 1px solid #ef4444; }
-.badge-hold   { background: #1c1505; color: #f59e0b; border: 1px solid #f59e0b; }
-.badge-neutral { background: #0f1923; color: #94a3b8; border: 1px solid #2d4a5a; }
-
-/* ── Info / insight box ───────────────────────────────────── */
-.insight-box {
-    background: #0d1e2a;
-    border-left: 3px solid #00e5c8;
-    border-radius: 0 10px 10px 0;
-    padding: 1.1rem 1.4rem;
-    margin: 1rem 0;
-    font-size: 0.92rem;
-    color: #94a3b8;
-    line-height: 1.75;
-}
-.insight-box strong { color: #e2e8f0; }
-.insight-box .verdict { font-size: 1.05rem; color: #00e5c8; font-weight: 600; }
-
-/* ── Divider ──────────────────────────────────────────────── */
-.styled-divider {
-    border: none;
-    border-top: 1px solid #1a2a35;
-    margin: 2rem 0;
-}
-
-/* ── Streamlit widget overrides ───────────────────────────── */
-[data-testid="stTextInput"] input,
-[data-testid="stNumberInput"] input {
-    background: #0f1923 !important;
-    border: 1px solid #1e3a4a !important;
-    color: #e2e8f0 !important;
-    border-radius: 8px !important;
-    font-family: 'IBM Plex Mono', monospace !important;
-}
-[data-testid="stSelectbox"] > div {
-    background: #0f1923 !important;
-    border: 1px solid #1e3a4a !important;
-    border-radius: 8px !important;
-}
+/* ── Buttons ───────────────────────── */
 [data-testid="stButton"] > button {
-    background: #00e5c8 !important;
-    color: #0a0d12 !important;
-    font-family: 'Syne', sans-serif !important;
-    font-weight: 700 !important;
-    border: none !important;
-    border-radius: 8px !important;
-    padding: 0.5rem 1.8rem !important;
-    letter-spacing: 0.04em !important;
+    background: #eeeeee;
+    color: #000000;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    padding: 0.4rem 1rem;
 }
 [data-testid="stButton"] > button:hover {
-    background: #00c9ae !important;
+    background: #dddddd;
 }
-[data-testid="stMetric"] {
-    background: #0f1923;
-    border: 1px solid #1e3a4a;
-    border-radius: 12px;
-    padding: 1rem 1.25rem;
-}
-[data-testid="stMetricLabel"] { color: #4a7c8a !important; }
-[data-testid="stMetricValue"] {
-    font-family: 'IBM Plex Mono', monospace !important;
-    color: #e2e8f0 !important;
-}
-[data-testid="stDataFrame"] {
-    border: 1px solid #1e3a4a !important;
-    border-radius: 10px !important;
-}
-.stTabs [data-baseweb="tab-list"] {
-    background: #0f1923;
-    border-radius: 10px;
-    padding: 4px;
-    gap: 4px;
-    border: 1px solid #1e3a4a;
-}
-.stTabs [data-baseweb="tab"] {
-    background: transparent;
-    color: #4a7c8a;
-    border-radius: 8px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.82rem;
-    letter-spacing: 0.06em;
-}
-.stTabs [aria-selected="true"] {
-    background: #00e5c8 !important;
-    color: #0a0d12 !important;
-}
-/* Slider */
-[data-testid="stSlider"] [data-baseweb="slider"] [role="slider"] {
-    background: #00e5c8 !important;
-}
-/* Caption */
-[data-testid="stCaptionContainer"] { color: #4a7c8a !important; }
-/* Spinners */
-[data-testid="stSpinner"] { color: #00e5c8 !important; }
 
-/* ── Table styling ────────────────────────────────────────── */
-.styled-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.85rem;
+/* ── Inputs ───────────────────────── */
+input, textarea {
+    border-radius: 6px !important;
+    border: 1px solid #cccccc !important;
 }
-.styled-table th {
-    background: #0f1923;
-    color: #4a7c8a;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 0.72rem;
-    padding: 0.7rem 1rem;
-    border-bottom: 1px solid #1e3a4a;
+
+/* ── Tables ───────────────────────── */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    border: 1px solid #dddddd;
+    padding: 0.5rem;
     text-align: left;
 }
-.styled-table td {
-    padding: 0.65rem 1rem;
-    border-bottom: 1px solid #12202e;
-    color: #cbd5e1;
+th {
+    background-color: #f2f2f2;
 }
-.styled-table tr:last-child td { border-bottom: none; }
-.styled-table tr:hover td { background: #0d1e2a; }
+
 </style>
 """, unsafe_allow_html=True)
 
 
-# ============================================================
-# MATPLOTLIB THEME — dark finance style to match the UI
-# ============================================================
+# ── Matplotlib (simple light theme) ──
 plt.rcParams.update({
-    "figure.facecolor":  "#0f1923",
-    "axes.facecolor":    "#0a0d12",
-    "axes.edgecolor":    "#1e3a4a",
-    "axes.labelcolor":   "#4a7c8a",
-    "xtick.color":       "#4a7c8a",
-    "ytick.color":       "#4a7c8a",
-    "grid.color":        "#1a2a35",
-    "grid.linestyle":    "--",
-    "grid.alpha":        0.6,
-    "text.color":        "#e2e8f0",
-    "font.family":       "monospace",
-    "figure.dpi":        130,
+    "figure.facecolor": "white",
+    "axes.facecolor": "white",
+    "axes.edgecolor": "black",
+    "axes.labelcolor": "black",
+    "xtick.color": "black",
+    "ytick.color": "black",
+    "grid.color": "#dddddd",
+    "text.color": "black",
+    "font.family": "sans-serif",
 })
 
 
