@@ -8,7 +8,7 @@
 # Dependencies:
 #   pip install streamlit yfinance pandas numpy matplotlib
 # ============================================================
-pip -q install yfinance
+pip install yfinance
 
 import streamlit as st
 import yfinance as yf
