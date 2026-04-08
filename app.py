@@ -327,7 +327,7 @@ with tab1:
         pct_sign   = "+" if period_return >= 0 else ""
 
         with m1:
-            st.metric(f"""
+            st.markdown(f"""
             <div class="metric-card {'accent' if period_return >= 0 else 'danger'}">
                 <div class="card-label">Current Price</div>
                 <div class="card-value cyan">{fmt_money(current_price)}</div>
