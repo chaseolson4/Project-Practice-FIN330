@@ -23,6 +23,7 @@ warnings.filterwarnings("ignore")
 # PAGE CONFIG — must be the very first Streamlit command
 # ============================================================
 st.title("📊 Stock Analytics Dashboard")
+st.markdown("*Financial Analytics Dashboard - Real data used.*")
 
 # ============================================================
 # CUSTOM CSS STYLING
