@@ -22,6 +22,16 @@ warnings.filterwarnings("ignore")
 # ============================================================
 # PAGE CONFIG — must be the very first Streamlit command
 # ============================================================
+st.set_page_config(
+    page_title="Stock Analytics Dashboard",
+    page_icon="📊",
+    layout="wide"
+)
+
+# ============================================================
+# APP TITLE & NAVIGATION
+# st.title() shows a big heading
+# ============================================================
 st.title("📊 Stock Analytics Dashboard")
 st.markdown("*Financial Analytics Dashboard - Real data used.*")
 
