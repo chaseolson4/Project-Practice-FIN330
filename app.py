@@ -522,7 +522,7 @@ with tab2:
     st.markdown('<div class="section-title">Portfolio Performance Dashboard</div>', unsafe_allow_html=True)
 
     # ── Portfolio Setup ──────────────────────────────────────
-    st.markdown("#### Step 1 — Build Your Portfolio")
+    st.markdown("#### Build Your Portfolio")
     st.caption("Enter 5 stock tickers and assign weights that sum to 1.00")
 
     DEFAULT_TICKERS  = ["AAPL", "MSFT", "GOOGL", "AMZN", "NVDA"]
