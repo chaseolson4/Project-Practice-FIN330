@@ -242,16 +242,6 @@ def sharpe_ratio(returns: pd.Series, risk_free: float = 0.045) -> float:
 
 
 # ============================================================
-# HERO HEADER
-# ============================================================
-st.markdown("""
-<div class="hero">
-    <div class="hero-title">Financial Analytics<br><span>Dashboard</span></div>
-    <div class="hero-sub">Real-time market data · Python · Yahoo Finance</div>
-</div>
-""", unsafe_allow_html=True)
-
-# ============================================================
 # TABS
 # ============================================================
 tab1, tab2 = st.tabs(["  PART 1 — Individual Stock  ", "  PART 2 — Portfolio Dashboard  "])
