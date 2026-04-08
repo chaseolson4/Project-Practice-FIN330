@@ -33,7 +33,7 @@ st.set_page_config(
 # st.title() shows a big heading
 # ============================================================
 st.title("📊 Stock Analytics Dashboard")
-st.markdown("*Financial Analytics Dashboard - Real data used.*")
+st.markdown("*Financial Analytics Dashboard - Real data from Yahoo Finance used.*")
 
 # ============================================================
 # CUSTOM CSS STYLING
