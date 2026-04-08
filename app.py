@@ -29,90 +29,91 @@ st.set_page_config(
 )
 
 # ============================================================
-# CUSTOM CSS — refined dark-finance aesthetic
+# CUSTOM CSS STYLING
+# st.markdown() lets us inject raw HTML or CSS into the page.
+# unsafe_allow_html=True is required to render actual HTML.
+# We use this to make the app look polished and professional.
 # ============================================================
 st.markdown("""
 <style>
+    /* Import a clean, professional font from Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono&display=swap');
 
-/* ── Base ───────────────────────────── */
-html, body, [class*="css"] {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    color: #000000;
-}
+    /* Apply font to the whole app */
+    html, body, [class*="css"] {
+        font-family: 'DM Sans', sans-serif;
+    }
 
-/* App background */
-.stApp {
-    background-color: #ffffff;
-}
+    /* Style the big metric number cards */
+    .metric-card {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 1.2rem 1.5rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .metric-label {
+        font-size: 13px;
+        color: #64748b;
+        margin-bottom: 4px;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+    }
+    .metric-value {
+        font-size: 28px;
+        font-weight: 600;
+        color: #0f172a;
+        font-family: 'DM Mono', monospace;
+    }
+    .metric-value.highlight {
+        color: #2563eb;
+    }
+    .metric-value.green {
+        color: #16a34a;
+    }
 
-/* Main spacing */
-.block-container {
-    padding-top: 1.5rem;
-    padding-bottom: 2rem;
-}
+    /* Style the tip/advice boxes */
+    .tip-box {
+        background: #eff6ff;
+        border-left: 4px solid #2563eb;
+        border-radius: 0 8px 8px 0;
+        padding: 1rem 1.25rem;
+        margin-top: 1rem;
+        font-size: 15px;
+        color: #1e3a5f;
+        line-height: 1.7;
+    }
 
-/* ── Headers ───────────────────────── */
-h1, h2, h3 {
-    color: #000000;
-}
+    /* Style allocation rows */
+    .alloc-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #f1f5f9;
+        font-size: 15px;
+    }
+    .alloc-label { color: #374151; }
+    .alloc-value { font-weight: 600; color: #0f172a; font-family: 'DM Mono', monospace; }
 
-/* ── Simple cards ──────────────────── */
-.metric-card {
-    background: #f9f9f9;
-    border: 1px solid #dddddd;
-    border-radius: 8px;
-    padding: 1rem;
-}
+    /* Make Streamlit's default metric look nicer */
+    [data-testid="stMetric"] {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 1rem 1.25rem;
+    }
 
-/* ── Buttons ───────────────────────── */
-[data-testid="stButton"] > button {
-    background: #eeeeee;
-    color: #000000;
-    border: 1px solid #cccccc;
-    border-radius: 6px;
-    padding: 0.4rem 1rem;
-}
-[data-testid="stButton"] > button:hover {
-    background: #dddddd;
-}
-
-/* ── Inputs ───────────────────────── */
-input, textarea {
-    border-radius: 6px !important;
-    border: 1px solid #cccccc !important;
-}
-
-/* ── Tables ───────────────────────── */
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-th, td {
-    border: 1px solid #dddddd;
-    padding: 0.5rem;
-    text-align: left;
-}
-th {
-    background-color: #f2f2f2;
-}
-
+    /* Section header style */
+    .section-intro {
+        font-size: 16px;
+        color: #475569;
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+    }
 </style>
 """, unsafe_allow_html=True)
-
-
-# ── Matplotlib (simple light theme) ──
-plt.rcParams.update({
-    "figure.facecolor": "white",
-    "axes.facecolor": "white",
-    "axes.edgecolor": "black",
-    "axes.labelcolor": "black",
-    "xtick.color": "black",
-    "ytick.color": "black",
-    "grid.color": "#dddddd",
-    "text.color": "black",
-    "font.family": "sans-serif",
-})
 
 
 # ============================================================
