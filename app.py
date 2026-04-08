@@ -22,11 +22,7 @@ warnings.filterwarnings("ignore")
 # ============================================================
 # PAGE CONFIG — must be the very first Streamlit command
 # ============================================================
-st.set_page_config(
-    page_title="Stock Analytics Dashboard",
-    page_icon="📊",
-    layout="wide"
-)
+st.title("📊 Stock Analytics Dashboard")
 
 # ============================================================
 # CUSTOM CSS STYLING
